@@ -1,0 +1,208 @@
+<form>
+    <p>Use e notation. (e means "10 to the power of")</p>
+    <p class="conv">Millimeter to meter converter -></p>
+    <input class="conv" ngModel name="inMM" [(ngModel)]="inMM">
+    <p class="conv">{{inMM | inM}}m.</p>
+    <table>
+        <tr>
+            <th>Description</th>
+            <th>Beam</th>
+            <th>Max. Deflection</th>
+            <th>Max. Bending Moment</th>
+        </tr>
+        <tr>
+            <td>Cantilever Beam with Moment at free end.</td>
+            <td><img src="assets/bm1.PNG" alt=""></td>
+            <td>
+                <div *ngIf="!isCalc1dClicked">
+                    Formula: ML<sup>2</sup> / (2EI)
+                    <div>
+                        <input ngModel name="dm1" #dm1="ngModel" [(ngModel)]="dm1Val_M" required type="number" placeholder="Moment (M) in N-m">
+                        <input ngModel name="dl1" #dl1="ngModel" [(ngModel)]="dl1Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <input ngModel name="dei1" #dei1="ngModel" [(ngModel)]="dei1Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <button type="button" (click)="calc1d()" [disabled]="!dl1.valid || !dm1.valid || !dei1.valid" class="btn" [class.btn-active]="dl1.valid && dm1.valid && dei1.valid">
+                            <div *ngIf="!isCalc1dClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc1dClicked">Result: {{ans1d}} m
+                <button type="button" (click)="calc1d()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+            <td>
+                <div *ngIf="!isCalc1bClicked">
+                    Formula: M 
+                    <div>
+                        <input ngModel name="bm1" #bm1="ngModel" [(ngModel)]="bm1Val_M" required type="number" placeholder="Moment (M) in N-m">
+                        <button type="button" (click)="calc1b()" [disabled]="!bm1.valid" class="btn" [class.btn-active]="bm1.valid">
+                            <div *ngIf="!isCalc1bClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc1bClicked">Result: {{ans1b}} N-m
+                <button type="button" (click)="calc1b()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Cantilever Beam with Point Load at free end.</td>
+            <td><img src="assets/bm2.PNG" alt=""></td>
+            <td>
+                <div *ngIf="!isCalc2dClicked">
+                    Formula: WL<sup>3</sup> / (3EI)
+                    <div>
+                        <input ngModel name="dw2" #dw2="ngModel" [(ngModel)]="dw2Val_W" required type="number" placeholder="Point Load (W) in N">
+                        <input ngModel name="dl2" #dl2="ngModel" [(ngModel)]="dl2Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <input ngModel name="dei2" #dei2="ngModel" [(ngModel)]="dei2Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <button type="button" (click)="calc2d()" [disabled]="!dl2.valid || !dw2.valid || !dei2.valid" class="btn" [class.btn-active]="dl2.valid && dw2.valid && dei2.valid">
+                            <div *ngIf="!isCalc2dClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc2dClicked">Result: {{ans2d}} m
+                <button type="button" (click)="calc2d()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+            <td>
+                <div *ngIf="!isCalc2bClicked">
+                    Formula: WL 
+                    <div>
+                        <input ngModel name="bw2" #bw2="ngModel" [(ngModel)]="bw2Val_W" required type="number" placeholder="Point Load (W) in N">
+                        <input ngModel name="bl2" #bl2="ngModel" [(ngModel)]="bl2Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <button type="button" (click)="calc2b()" [disabled]="!bw2.valid || !bl2.valid" class="btn" [class.btn-active]="bw2.valid && bl2.valid">
+                            <div *ngIf="!isCalc1bClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc2bClicked">Result: {{ans2b}} N-m
+                <button type="button" (click)="calc2b()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Cantilever Beam with Uniformly Distributed Load.</td>
+            <td><img src="assets/bm3.PNG" alt=""></td>
+            <td>
+                <div *ngIf="!isCalc3dClicked">
+                    Formula: wL<sup>4</sup> / (8EI)
+                    <div>
+                        <input ngModel name="dw3" #dw3="ngModel" [(ngModel)]="dw3Val_w" required type="number" placeholder="Load / Length (w) in N/m">
+                        <input ngModel name="dl3" #dl3="ngModel" [(ngModel)]="dl3Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <input ngModel name="dei3" #dei3="ngModel" [(ngModel)]="dei3Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <button type="button" (click)="calc3d()" [disabled]="!dl3.valid || !dw3.valid || !dei3.valid" class="btn" [class.btn-active]="dl3.valid && dw3.valid && dei3.valid">
+                            <div *ngIf="!isCalc3dClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc3dClicked">Result: {{ans3d}} m
+                <button type="button" (click)="calc3d()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+            <td>
+                <div *ngIf="!isCalc3bClicked">
+                    Formula: wL<sup>2</sup> / 2
+                    <div>
+                        <input ngModel name="bw3" #bw3="ngModel" [(ngModel)]="bw3Val_w" required type="number" placeholder="Load / Length(w) in N/m">
+                        <input ngModel name="bl3" #bl3="ngModel" [(ngModel)]="bl3Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <button type="button" (click)="calc3b()" [disabled]="!bw3.valid || !bl3.valid" class="btn" [class.btn-active]="bw3.valid && bl3.valid">
+                            <div *ngIf="!isCalc3bClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc3bClicked">Result: {{ans3b}} N-m
+                <button type="button" (click)="calc3b()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Simply Supported Beam with Point Load at Centre.</td>
+            <td><img src="assets/bm4.PNG" alt=""></td>
+            <td>
+                <div *ngIf="!isCalc4dClicked">
+                    Formula: WL<sup>3</sup> / (48EI)
+                    <div>
+                        <input ngModel name="dw4" #dw4="ngModel" [(ngModel)]="dw4Val_W" required type="number" placeholder="Point Load (W) in N">
+                        <input ngModel name="dl4" #dl4="ngModel" [(ngModel)]="dl4Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <input ngModel name="dei4" #dei4="ngModel" [(ngModel)]="dei4Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <button type="button" (click)="calc4d()" [disabled]="!dl4.valid || !dw4.valid || !dei4.valid" class="btn" [class.btn-active]="dl4.valid && dw4.valid && dei4.valid">
+                            <div *ngIf="!isCalc4dClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc4dClicked">Result: {{ans4d}} m
+                <button type="button" (click)="calc4d()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+            <td>
+                <div *ngIf="!isCalc4bClicked">
+                    Formula: WL / 4
+                    <div>
+                        <input ngModel name="bw4" #bw4="ngModel" [(ngModel)]="bw4Val_W" required type="number" placeholder="Point Load (W) in N">
+                        <input ngModel name="bl4" #bl4="ngModel" [(ngModel)]="bl4Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <button type="button" (click)="calc4b()" [disabled]="!bw4.valid || !bl4.valid" class="btn" [class.btn-active]="bw4.valid && bl4.valid">
+                            <div *ngIf="!isCalc4bClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc4bClicked">Result: {{ans4b}} N-m
+                <button type="button" (click)="calc4b()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Simply Supported Beam with Uniformly Distributed Load.</td>
+            <td><img src="assets/bm5.PNG" alt=""></td>
+            <td>
+                <div *ngIf="!isCalc5dClicked">
+                    Formula: 5wL<sup>4</sup> / (384EI)
+                    <div>
+                        <input ngModel name="dw5" #dw5="ngModel" [(ngModel)]="dw5Val_w" required type="number" placeholder="Load / Length(w) in N/m">
+                        <input ngModel name="dl5" #dl5="ngModel" [(ngModel)]="dl5Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <input ngModel name="dei5" #dei5="ngModel" [(ngModel)]="dei5Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <button type="button" (click)="calc5d()" [disabled]="!dl5.valid || !dw5.valid || !dei5.valid" class="btn" [class.btn-active]="dl5.valid && dw5.valid && dei5.valid">
+                            <div *ngIf="!isCalc5dClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc5dClicked">Result: {{ans5d}} m
+                <button type="button" (click)="calc5d()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+            <td>
+                <div *ngIf="!isCalc5bClicked">
+                    Formula: wL<sup>2</sup>/ 8
+                    <div>
+                        <input ngModel name="bw5" #bw5="ngModel" [(ngModel)]="bw5Val_w" required type="number" placeholder="Load / Length(w) in N/m">
+                        <input ngModel name="bl5" #bl5="ngModel" [(ngModel)]="bl5Val_L" required type="number" placeholder="Length of beam (L) in m">
+                        <button type="button" (click)="calc5b()" [disabled]="!bw5.valid || !bl5.valid" class="btn" [class.btn-active]="bw5.valid && bl5.valid">
+                            <div *ngIf="!isCalc5bClicked">Calculate</div>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="isCalc5bClicked">Result: {{ans5b}} N-m
+                <button type="button" (click)="calc5b()" class="btn">
+                    Back To Formula
+                </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>

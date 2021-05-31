@@ -1,0 +1,28 @@
+
+h1{
+    font-family: 'Tenor Sans', sans-serif;
+    padding-left: 30px;
+    font-size: 1.7rem;
+}
+
+.heading{
+    border: 2px solid transparent;
+    width: 44%;
+    margin: auto;
+    animation: animate 1000ms ease infinite;
+}
+
+@keyframes animate{
+    25%{
+        border-bottom-color: grey;
+    }
+    50%{
+        border-left-color: black;
+    }
+    75%{
+        border-top-color: grey;
+    }
+    100%{
+        border-right-color: black;
+    }
+}
