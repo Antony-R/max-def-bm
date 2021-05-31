@@ -19,7 +19,7 @@
                     <div>
                         <input ngModel name="dm1" #dm1="ngModel" [(ngModel)]="dm1Val_M" required type="number" placeholder="Moment (M) in N-m">
                         <input ngModel name="dl1" #dl1="ngModel" [(ngModel)]="dl1Val_L" required type="number" placeholder="Length of beam (L) in m">
-                        <input ngModel name="dei1" #dei1="ngModel" [(ngModel)]="dei1Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <input ngModel name="dei1" #dei1="ngModel" [(ngModel)]="dei1Val_EI" required type="number" placeholder="Flex.rigidity(EI) in Nm^2">
                         <button type="button" (click)="calc1d()" [disabled]="!dl1.valid || !dm1.valid || !dei1.valid" class="btn" [class.btn-active]="dl1.valid && dm1.valid && dei1.valid">
                             <div *ngIf="!isCalc1dClicked">Calculate</div>
                         </button>
@@ -57,7 +57,7 @@
                     <div>
                         <input ngModel name="dw2" #dw2="ngModel" [(ngModel)]="dw2Val_W" required type="number" placeholder="Point Load (W) in N">
                         <input ngModel name="dl2" #dl2="ngModel" [(ngModel)]="dl2Val_L" required type="number" placeholder="Length of beam (L) in m">
-                        <input ngModel name="dei2" #dei2="ngModel" [(ngModel)]="dei2Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <input ngModel name="dei2" #dei2="ngModel" [(ngModel)]="dei2Val_EI" required type="number" placeholder="Flex.rigidity(EI) in Nm^2">
                         <button type="button" (click)="calc2d()" [disabled]="!dl2.valid || !dw2.valid || !dei2.valid" class="btn" [class.btn-active]="dl2.valid && dw2.valid && dei2.valid">
                             <div *ngIf="!isCalc2dClicked">Calculate</div>
                         </button>
@@ -76,7 +76,7 @@
                         <input ngModel name="bw2" #bw2="ngModel" [(ngModel)]="bw2Val_W" required type="number" placeholder="Point Load (W) in N">
                         <input ngModel name="bl2" #bl2="ngModel" [(ngModel)]="bl2Val_L" required type="number" placeholder="Length of beam (L) in m">
                         <button type="button" (click)="calc2b()" [disabled]="!bw2.valid || !bl2.valid" class="btn" [class.btn-active]="bw2.valid && bl2.valid">
-                            <div *ngIf="!isCalc1bClicked">Calculate</div>
+                            <div *ngIf="!isCalc2bClicked">Calculate</div>
                         </button>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                     <div>
                         <input ngModel name="dw3" #dw3="ngModel" [(ngModel)]="dw3Val_w" required type="number" placeholder="Load / Length (w) in N/m">
                         <input ngModel name="dl3" #dl3="ngModel" [(ngModel)]="dl3Val_L" required type="number" placeholder="Length of beam (L) in m">
-                        <input ngModel name="dei3" #dei3="ngModel" [(ngModel)]="dei3Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <input ngModel name="dei3" #dei3="ngModel" [(ngModel)]="dei3Val_EI" required type="number" placeholder="Flex.rigidity(EI) in Nm^2">
                         <button type="button" (click)="calc3d()" [disabled]="!dl3.valid || !dw3.valid || !dei3.valid" class="btn" [class.btn-active]="dl3.valid && dw3.valid && dei3.valid">
                             <div *ngIf="!isCalc3dClicked">Calculate</div>
                         </button>
@@ -135,7 +135,7 @@
                     <div>
                         <input ngModel name="dw4" #dw4="ngModel" [(ngModel)]="dw4Val_W" required type="number" placeholder="Point Load (W) in N">
                         <input ngModel name="dl4" #dl4="ngModel" [(ngModel)]="dl4Val_L" required type="number" placeholder="Length of beam (L) in m">
-                        <input ngModel name="dei4" #dei4="ngModel" [(ngModel)]="dei4Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <input ngModel name="dei4" #dei4="ngModel" [(ngModel)]="dei4Val_EI" required type="number" placeholder="Flex.rigidity(EI) in Nm^2">
                         <button type="button" (click)="calc4d()" [disabled]="!dl4.valid || !dw4.valid || !dei4.valid" class="btn" [class.btn-active]="dl4.valid && dw4.valid && dei4.valid">
                             <div *ngIf="!isCalc4dClicked">Calculate</div>
                         </button>
@@ -174,7 +174,7 @@
                     <div>
                         <input ngModel name="dw5" #dw5="ngModel" [(ngModel)]="dw5Val_w" required type="number" placeholder="Load / Length(w) in N/m">
                         <input ngModel name="dl5" #dl5="ngModel" [(ngModel)]="dl5Val_L" required type="number" placeholder="Length of beam (L) in m">
-                        <input ngModel name="dei5" #dei5="ngModel" [(ngModel)]="dei5Val_EI" required type="number" placeholder="Flexural rigidity (EI) in Nm">
+                        <input ngModel name="dei5" #dei5="ngModel" [(ngModel)]="dei5Val_EI" required type="number" placeholder="Flex.rigidity(EI) in Nm^2">
                         <button type="button" (click)="calc5d()" [disabled]="!dl5.valid || !dw5.valid || !dei5.valid" class="btn" [class.btn-active]="dl5.valid && dw5.valid && dei5.valid">
                             <div *ngIf="!isCalc5dClicked">Calculate</div>
                         </button>
